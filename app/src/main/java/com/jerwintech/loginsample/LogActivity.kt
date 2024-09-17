@@ -304,7 +304,7 @@ class LogActivity : AppCompatActivity() {
     private val resetValuesRunnable = object : Runnable {
         override fun run() {
             resetValues()
-            handler.postDelayed(this, 24 * 60 * 60 * 1000) // Schedule next reset in 24 hours
+            handler.postDelayed(this, 24 * 60 * 60 * 1000)
         }
     }
 
@@ -464,7 +464,7 @@ class LogActivity : AppCompatActivity() {
         data.setValueTextColor(Color.BLACK)
 
         weeklyCaloriePieChart.data = data.apply {
-            setValueFormatter(DoubleValueFormatter()) // Set custom value formatter
+            setValueFormatter(DoubleValueFormatter())
         }
         weeklyCaloriePieChart.invalidate()
     }
@@ -535,7 +535,7 @@ class LogActivity : AppCompatActivity() {
 
         // Set the data for the pie chart and refresh its display
         pieChart.data = PieData(dataSet).apply {
-            setValueFormatter(DoubleValueFormatter()) // Set custom value formatter
+            setValueFormatter(DoubleValueFormatter())
         }
         pieChart.invalidate()
     }
@@ -571,7 +571,7 @@ class LogActivity : AppCompatActivity() {
         data.setValueTextColor(Color.BLACK)
 
         monthlyCaloriePieChart.data = data.apply {
-            setValueFormatter(DoubleValueFormatter()) // Set custom value formatter
+            setValueFormatter(DoubleValueFormatter()) 
         }
         monthlyCaloriePieChart.invalidate()
     }
@@ -607,7 +607,7 @@ class LogActivity : AppCompatActivity() {
 
         // Set the data for the pie chart and refresh its display
         pieChart.data = PieData(dataSet).apply {
-            setValueFormatter(DoubleValueFormatter()) // Set custom value formatter
+            setValueFormatter(DoubleValueFormatter()) 
         }
         pieChart.invalidate()
     }
@@ -643,7 +643,7 @@ class LogActivity : AppCompatActivity() {
 
         // Set the data for the pie chart and refresh its display
         pieChart.data = PieData(dataSet).apply {
-            setValueFormatter(DoubleValueFormatter()) // Set custom value formatter
+            setValueFormatter(DoubleValueFormatter()) 
         }
         pieChart.invalidate()
     }
