@@ -47,7 +47,6 @@ class DetailActivity : AppCompatActivity() {
 
         val activityInfo = packageManager.getActivityInfo(componentName, 0)
         activityInfo.launchMode = ActivityInfo.LAUNCH_SINGLE_TOP
-        //Prepare Tflite model and data
         val fileName = "labels.txt"
         val sugarName = "sugar.txt"
         val caloriesName = "calorie.txt"
@@ -60,11 +59,11 @@ class DetailActivity : AppCompatActivity() {
         val sugarList = sugarString.split("\n")
         val caloriesList = caloriesString.split("\n")
 
-        //get uri image bitmap
+
         val imageUri: Uri? = intent.data
         bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, imageUri)
 
-        //load image
+
         loadImage(imageUri)
 
         binding.btnPredicted.setOnClickListener {
@@ -114,7 +113,6 @@ class DetailActivity : AppCompatActivity() {
                     foodData["sugar"] = String.format("%.1f", resultSugar.toFloat() * foodQuantity)
                     foodData["timestamp"] = ServerValue.TIMESTAMP
 
-                    // Save the data to the database
                     foodRef.setValue(foodData)
 
                     val dailyFoodsRef = database.getReference("users/$uid/dailyFoods/").push()
@@ -146,7 +144,6 @@ class DetailActivity : AppCompatActivity() {
                         override fun onDataChange(snapshot: DataSnapshot) {
                             val userName = snapshot.value as? String
 
-                            // Start the MainActivity
                             val intent = Intent(this@DetailActivity, MainActivity::class.java)
                             intent.putExtra("USER_NAME", userName)
                             startActivity(intent)
@@ -163,7 +160,6 @@ class DetailActivity : AppCompatActivity() {
                 }
             }
 
-            //calorie chart
             if (resultCalorie != null){
                 val quantityLayout = findViewById<TextInputLayout>(R.id.quantityLayout)
                 quantityLayout.visibility = View.GONE
@@ -197,7 +193,6 @@ class DetailActivity : AppCompatActivity() {
             val currentUser = FirebaseAuth.getInstance().currentUser
             if (currentUser != null) {
 
-                // User is already authenticated, start MainActivity
                 val welcomeUser : TextView = findViewById(R.id.user)
                 val userName = intent.getStringExtra("USER_NAME")
                 welcomeUser.text = "Welcome, $userName!"
@@ -229,9 +224,7 @@ class DetailActivity : AppCompatActivity() {
         super.onStart()
         val currentUser = FirebaseAuth.getInstance().currentUser
         if (currentUser != null) {
-            // Update UI with user's name
             val displayName = currentUser.displayName
-            // ...
         }
     }
 
@@ -240,7 +233,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
 
-    //load image function
+
     private fun loadImage(image : Uri?){
         Log.d("photo", image.toString())
         if (image != null){
@@ -249,7 +242,7 @@ class DetailActivity : AppCompatActivity() {
             binding.foodName.text = "No Photo Input"
         }
     }
-    //get value of data
+
     private fun getMax(arr:FloatArray) : Int{
         var ind = 0
         var min = 0.0f
