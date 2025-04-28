@@ -1,4 +1,4 @@
-# FinalSweeTrack
+# SweeTrack
 
 **FinalSweeTrack** is an Android application designed to assist users in managing their sugar and calorie intake.  
 By leveraging food recognition technology, the app classifies food items and estimates their nutritional content.  
